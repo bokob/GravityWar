@@ -10,19 +10,14 @@ public class Define
         Unknown,
         Player,
     }
-    public enum State
-    {
-        Die,
-        Moving,
-        Idle,
-        Skill,
-    }
+
     public enum Layer
     {
         Monster = 8,
         Ground = 9,
         Block = 10,
     }
+
     public enum Scene
     {
         Unknown,
@@ -40,8 +35,9 @@ public class Define
 
     public enum CameraMode
     {
+        Default,  // 기본
+        Aim,      // 조준
         Observer, // 관찰자 시점
-        Turn,     // 플레이 차례 시점
-        NotTurn
+        Tracer    // 발사체 추적
     }
 }
