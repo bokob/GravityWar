@@ -40,4 +40,12 @@ public class Define
         Observer, // 관찰자 시점
         Tracer    // 발사체 추적
     }
+
+    public enum GravityObject
+    {
+        None,
+        Player,
+        Launcher,
+        Projectile
+    }
 }

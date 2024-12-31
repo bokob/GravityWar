@@ -7,12 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GravityObject : MonoBehaviour
 {
+    [SerializeField] Define.GravityObject Type;
+
     Rigidbody _rb;
     public List<GravityArea> _gravityAreaList;
     public float GravityForce = 1000f;
     public float G = 9.81f;
 
     PlayerStatus _playerStatus;
+    Projectile _projectile;
 
     // 중력 방향
     public Vector3 GravityDirection
@@ -52,23 +55,33 @@ public class GravityObject : MonoBehaviour
         }
 
         // 플레이어의 경우
-        if (gameObject.TryGetComponent(out _playerStatus))
+        if(Type == Define.GravityObject.Player)
         {
             if (_playerStatus.IsFall)
-            {
                 totalForce = closetPlanetVector.normalized * closetPlanetForce;
-            }
         }
 
         return totalForce.normalized;
     }
 
-    void Start()
+    void Awake()
     {
+        if (TryGetComponent<PlayerStatus>(out _playerStatus))
+            Type = Define.GravityObject.Player;
+        else if (TryGetComponent<Projectile>(out _projectile))
+            Type = Define.GravityObject.Projectile;
+
         _rb = transform.GetComponent<Rigidbody>();
         _gravityAreaList = new List<GravityArea>();
+    }
 
-        _playerStatus = GetComponent<PlayerStatus>();
+    void FixedUpdate()
+    {
+        if (Type != Define.GravityObject.Launcher)
+        {
+            // 중력을 받는 방향으로 힘을 가함
+            _rb.AddForce(GravityDirection * (GravityForce * Time.fixedDeltaTime), ForceMode.Acceleration);
+        }
     }
 
     public void AddGravityArea(GravityArea gravityArea)

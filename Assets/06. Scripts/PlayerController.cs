@@ -55,9 +55,6 @@ public class PlayerController : MonoBehaviour
     // 중력 방향에 맞게 플레이어 서기
     public void StandOnGround()
     {
-        // 중력을 받는 방향으로 힘을 가함
-        _rb.AddForce(_gravityObject.GravityDirection * (_gravityObject.GravityForce * Time.fixedDeltaTime), ForceMode.Acceleration);
-
         // 물체의 위 벡터가 중력 방향의 반대로 갈 수 있게끔 각도 계산 (물체가 제대로 서있을 수 있음)
         Quaternion upRotation = Quaternion.FromToRotation(transform.up, -_gravityObject.GravityDirection);
 

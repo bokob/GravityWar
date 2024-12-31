@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 6489315563790255556}
   - component: {fileID: 6489315563790255557}
   - component: {fileID: 6489315563790255554}
-  - component: {fileID: 8896497968232981406}
   - component: {fileID: 1064564493412184098}
+  - component: {fileID: 5366092443901955723}
+  - component: {fileID: 1198765061}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -99,20 +100,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8896497968232981406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6489315563790255555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f246980cacbd9f4cb6bed15cc20c4f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 1064564493412184098}
-  _poofPrefab: {fileID: 0}
 --- !u!54 &1064564493412184098
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,8 +111,40 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5366092443901955723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6489315563790255555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f62f79d969d2d4d947df3c22e1aafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 3
+  _gravityAreaList: []
+  GravityForce: 1000
+  G: 9.81
+--- !u!114 &1198765061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6489315563790255555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24995402d56b60842ad73c8aab544f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  initialPosition: {x: 0, y: 0, z: 0}
+  initialSpeed: 0
+  mass: 0
